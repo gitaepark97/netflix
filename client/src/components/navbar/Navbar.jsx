@@ -1,5 +1,6 @@
-import './navbar.scss'
 import { useState } from 'react'
+
+import './navbar.scss'
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import NotificationsIcon from '@mui/icons-material/Notifications'
