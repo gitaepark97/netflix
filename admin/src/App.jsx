@@ -4,6 +4,7 @@ import './App.css'
 import Sidebar from './components/sidebar/Sidebar'
 import Home from './pages/home/Home'
 import NewUser from './pages/newUser/NewUser'
+import ProductList from './pages/productList/ProductList'
 import User from './pages/user/User'
 import UserList from './pages/userList/UserList'
 
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/newUser">
             <NewUser />
+          </Route>
+          <Route path="/products">
+            <ProductList />
           </Route>
         </Switch>
       </div>
