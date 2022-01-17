@@ -22,7 +22,7 @@ mongoose
 app.use(express.json())
 
 app.use('/api/auth', authRoute)
-app.user('/api/users', userRoute)
+app.use('/api/users', userRoute)
 
 app.listen(process.env.PORT, () => {
   console.log('Backend server is running')

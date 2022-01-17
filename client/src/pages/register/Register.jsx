@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 import './register.scss'
 
@@ -6,15 +8,25 @@ export default function Register() {
   const [email, setEmail] = useState('')
   // eslint-disable-next-line
   const [password, setPassword] = useState('')
+  // eslint-disable-next-line
+  const [username, setUsername] = useState('')
+  const history = useHistory()
   const emailRef = useRef()
   const passwordRef = useRef()
+  const usernameRef = useRef()
 
   const handleStart = () => {
     setEmail(emailRef.current.value)
   }
 
-  const handleFinish = () => {
+  const handleFinish = async event => {
+    event.preventDefault()
     setPassword(passwordRef.current.value)
+    setUsername(usernameRef.current.value)
+    try {
+      await axios.post('api/auth/register', { email, username, password })
+      history.push('/login')
+    } catch (err) {}
   }
 
   return (
@@ -42,6 +54,7 @@ export default function Register() {
           </div>
         ) : (
           <form className="input">
+            <input type="username" placeholder="username" ref={usernameRef} />
             <input type="password" placeholder="password" ref={passwordRef} />
             <button className="registerButton" onClick={handleFinish}>
               Start
