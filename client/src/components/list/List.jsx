@@ -6,9 +6,10 @@ import ListItem from '../listItem/ListItem'
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined'
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined'
 
-export default function List() {
+export default function List({ list }) {
   const [isMoved, setIsMoved] = useState(false)
   const [slideNumber, setSlideNumber] = useState(0)
+
   const listRef = useRef()
 
   const handleClick = direction => {
@@ -26,7 +27,7 @@ export default function List() {
 
   return (
     <div className="list">
-      <span className="listTitle">Continue to watch</span>
+      <span className="listTitle">{list.title}</span>
       <div className="wrapper">
         <ArrowBackOutlinedIcon
           className="sliderArrow left"
@@ -34,16 +35,9 @@ export default function List() {
           style={{ display: !isMoved && 'none' }}
         />
         <div className="container" ref={listRef}>
-          <ListItem index={0} />
-          <ListItem index={1} />
-          <ListItem index={2} />
-          <ListItem index={3} />
-          <ListItem index={4} />
-          <ListItem index={5} />
-          <ListItem index={6} />
-          <ListItem index={7} />
-          <ListItem index={8} />
-          <ListItem index={9} />
+          {list.content.map((index, item) => (
+            <ListItem index={index} item={item} />
+          ))}
         </div>
         <ArrowForwardOutlinedIcon className="sliderArrow right" onClick={() => handleClick('right')} />
       </div>

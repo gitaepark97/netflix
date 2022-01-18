@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 import './navbar.scss'
+import { AuthContext } from '../../authContext/AuthContext'
+import { logout } from '../../authContext/AuthAction'
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import NotificationsIcon from '@mui/icons-material/Notifications'
@@ -8,6 +11,7 @@ import SearchIcon from '@mui/icons-material/Search'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { dispatch } = useContext(AuthContext)
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true)
@@ -22,9 +26,15 @@ export default function Navbar() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
+          <Link to="/" className="link">
+            <span>Homepage</span>
+          </Link>
+          <Link to="/series" className="link">
+            <span className="navbarmainLinks">Series</span>
+          </Link>
+          <Link to="/movies" className="link">
+            <span className="navbarmainLinks"> Movies</span>
+          </Link>
           <span>New and Popular</span>
           <span>My List</span>
         </div>
@@ -40,7 +50,7 @@ export default function Navbar() {
             <ArrowDownwardIcon className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={() => dispatch(logout())}>Logout</span>
             </div>
           </div>
         </div>

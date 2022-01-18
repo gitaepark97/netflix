@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import './register.scss'
 
@@ -26,7 +26,9 @@ export default function Register() {
     try {
       await axios.post('api/auth/register', { email, username, password })
       history.push('/login')
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -38,7 +40,9 @@ export default function Register() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <button className="loginButton">Sign In</button>
+          <Link to="/login">
+            <button className="loginButton">Sign In</button>
+          </Link>
         </div>
       </div>
       <div className="container">
