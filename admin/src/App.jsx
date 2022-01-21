@@ -1,44 +1,44 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { useContext } from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import './App.css'
 import Sidebar from './components/sidebar/Sidebar'
+import Topbar from './components/topbar/Topbar'
+import { AuthContext } from './context/authContext/AuthContext'
 import Home from './pages/home/Home'
-import NewProduct from './pages/newProduct/NewProduct'
+import Login from './pages/login/Login'
 import NewUser from './pages/newUser/NewUser'
-import Product from './pages/product/Product'
-import ProductList from './pages/productList/ProductList'
 import User from './pages/user/User'
 import UserList from './pages/userList/UserList'
 
 function App() {
+  const { user } = useContext(AuthContext)
+
   return (
     <Router>
-      <div className="container">
-        <Sidebar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/users">
-            <UserList />
-          </Route>
-          <Route path="/user/:userId">
-            <User />
-          </Route>
-          <Route path="/newUser">
-            <NewUser />
-          </Route>
-          <Route path="/products">
-            <ProductList />
-          </Route>
-          <Route path="/product/:productId">
-            <Product />
-          </Route>
-          <Route path="/newProduct">
-            <NewProduct />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+        {user && (
+          <>
+            <Topbar />
+            <div className="container">
+              <Sidebar />
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/users">
+                <UserList />
+              </Route>
+              <Route path="/user/:userId">
+                <User />
+              </Route>
+              <Route path="/newUser">
+                <NewUser />
+              </Route>
+            </div>
+          </>
+        )}
+      </Switch>
     </Router>
   )
 }

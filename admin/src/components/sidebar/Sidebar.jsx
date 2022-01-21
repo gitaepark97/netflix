@@ -6,9 +6,10 @@ import LineStyleIcon from '@mui/icons-material/LineStyle'
 import TimelineIcon from '@mui/icons-material/Timeline'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
-import StorefrontIcon from '@mui/icons-material/Storefront'
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
-import BarChartIcon from '@mui/icons-material/BarChart'
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
+import ListIcon from '@mui/icons-material/List'
+import AddToQueueIcon from '@mui/icons-material/AddToQueue'
+import QueuePlayNextIcon from '@mui/icons-material/QueuePlayNext'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
@@ -49,17 +50,21 @@ export default function Sidebar() {
             </Link>
             <Link to="/products" className="link">
               <li className="sidebarListItem">
-                <StorefrontIcon className="sidebarIcon" />
-                Products
+                <PlayCircleOutlineIcon className="sidebarIcon" />
+                Movies
               </li>
             </Link>
             <li className="sidebarListItem">
-              <AttachMoneyIcon className="sidebarIcon" />
-              Transactions
+              <ListIcon className="sidebarIcon" />
+              Lists
             </li>
             <li className="sidebarListItem">
-              <BarChartIcon className="sidebarIcon" />
-              Reports
+              <AddToQueueIcon className="sidebarIcon" />
+              Add Movie
+            </li>
+            <li className="sidebarListItem">
+              <QueuePlayNextIcon className="sidebarIcon" />
+              Add List
             </li>
           </ul>
         </div>
