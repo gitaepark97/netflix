@@ -7,6 +7,9 @@ import Topbar from './components/topbar/Topbar'
 import { AuthContext } from './context/authContext/AuthContext'
 import Home from './pages/home/Home'
 import Login from './pages/login/Login'
+import Movie from './pages/movie/Movie'
+import MovieList from './pages/movieList/MovieList'
+import NewMovie from './pages/newMovie/NewMovie'
 import NewUser from './pages/newUser/NewUser'
 import User from './pages/user/User'
 import UserList from './pages/userList/UserList'
@@ -18,7 +21,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        {user && (
+        {true && (
           <>
             <Topbar />
             <div className="container">
@@ -34,6 +37,15 @@ function App() {
               </Route>
               <Route path="/newUser">
                 <NewUser />
+              </Route>
+              <Route path="/movies">
+                <MovieList />
+              </Route>
+              <Route path="/movie/:movieId">
+                <Movie />
+              </Route>
+              <Route path="/newMovie">
+                <NewMovie />
               </Route>
             </div>
           </>

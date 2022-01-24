@@ -1,4 +1,4 @@
-export const getMovieStart = () => ({
+export const getMoviesStart = () => ({
   type: 'GET_MOVIES_START',
 })
 
