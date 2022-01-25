@@ -6,6 +6,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import Topbar from './components/topbar/Topbar'
 import { AuthContext } from './context/authContext/AuthContext'
 import Home from './pages/home/Home'
+import ListList from './pages/listList/ListList'
 import Login from './pages/login/Login'
 import Movie from './pages/movie/Movie'
 import MovieList from './pages/movieList/MovieList'
@@ -46,6 +47,9 @@ function App() {
               </Route>
               <Route path="/newMovie">
                 <NewMovie />
+              </Route>
+              <Route path="/lists">
+                <ListList />
               </Route>
             </div>
           </>
