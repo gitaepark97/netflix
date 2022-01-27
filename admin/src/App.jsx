@@ -11,6 +11,7 @@ import ListList from './pages/listList/ListList'
 import Login from './pages/login/Login'
 import Movie from './pages/movie/Movie'
 import MovieList from './pages/movieList/MovieList'
+import NewList from './pages/newList/NewList'
 import NewMovie from './pages/newMovie/NewMovie'
 import NewUser from './pages/newUser/NewUser'
 import User from './pages/user/User'
@@ -54,6 +55,9 @@ function App() {
               </Route>
               <Route path="/list/:listId">
                 <List />
+              </Route>
+              <Route path="/newlist">
+                <NewList />
               </Route>
             </div>
           </>
